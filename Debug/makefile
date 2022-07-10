@@ -44,34 +44,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := TestEthernet
+BUILD_ARTIFACT_NAME := stm32f407_ksz8081_lwip
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-TestEthernet.elf \
+stm32f407_ksz8081_lwip.elf \
 
 MAP_FILES += \
-TestEthernet.map \
+stm32f407_ksz8081_lwip.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-TestEthernet.list \
+stm32f407_ksz8081_lwip.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: TestEthernet.elf secondary-outputs
+main-build: stm32f407_ksz8081_lwip.elf secondary-outputs
 
 # Tool invocations
-TestEthernet.elf TestEthernet.map: $(OBJS) $(USER_OBJS) /home/lyl/projects/youtube/TestEthernet/STM32F407VETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "TestEthernet.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/lyl/projects/youtube/TestEthernet/STM32F407VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TestEthernet.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+stm32f407_ksz8081_lwip.elf stm32f407_ksz8081_lwip.map: $(OBJS) $(USER_OBJS) /home/lyl/projects/youtube/stm32f407_ksz8081_lwip/STM32F407VETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "stm32f407_ksz8081_lwip.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/lyl/projects/youtube/stm32f407_ksz8081_lwip/STM32F407VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f407_ksz8081_lwip.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -80,14 +80,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-TestEthernet.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "TestEthernet.list"
+stm32f407_ksz8081_lwip.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "stm32f407_ksz8081_lwip.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) TestEthernet.elf TestEthernet.list TestEthernet.map default.size.stdout
+	-$(RM) default.size.stdout stm32f407_ksz8081_lwip.elf stm32f407_ksz8081_lwip.list stm32f407_ksz8081_lwip.map
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)

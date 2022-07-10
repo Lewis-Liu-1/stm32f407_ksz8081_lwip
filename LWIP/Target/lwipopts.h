@@ -91,7 +91,7 @@
 #define CHECKSUM_CHECK_ICMP6 0
 /*-----------------------------------------------------------------------------*/
 /* USER CODE BEGIN 1 */
-#define CHECKSUM_GEN_ICMP 0
+
 /* USER CODE END 1 */
 
 #ifdef __cplusplus

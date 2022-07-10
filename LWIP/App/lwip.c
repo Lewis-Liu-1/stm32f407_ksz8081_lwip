@@ -74,6 +74,8 @@ void MX_LWIP_Init(void)
   GATEWAY_ADDRESS[3] = 0;
 
 /* USER CODE BEGIN IP_ADDRESSES */
+  printf("ip address used: %d.%d.%d.%d\r\n", IP_ADDRESS[0],
+		  IP_ADDRESS[1],IP_ADDRESS[2],IP_ADDRESS[3]);
 /* USER CODE END IP_ADDRESSES */
 
   /* Initilialize the LwIP stack without RTOS */

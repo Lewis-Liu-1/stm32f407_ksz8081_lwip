@@ -662,7 +662,7 @@ void ethernet_link_check_state(struct netif *netif)
       HAL_ETH_Start(&heth);
       netif_set_up(netif);
       netif_set_link_up(netif);
-      printf("~~~~\t\t ethernet started~~~~~\r\n");
+      printf("~~~~\t\t ethernet started \t\t~~~~~\r\n");
     }
   }
 
